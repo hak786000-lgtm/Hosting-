@@ -3,11 +3,7 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -16,7 +12,5 @@
     "noEmit": true,
     "strict": false
   },
-  "include": [
-    "main.ts"
-  ]
+  "include": ["main.ts"]
 }
