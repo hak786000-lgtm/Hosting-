@@ -1,119 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pocket HTML Host - Instant Web Hosting</title>
+    <title>پکٹ ایچ ٹی ایم ایل ہوسٹ - پروڈکشن ہوسٹنگ</title>
     <meta name="theme-color" content="#0f172a" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body class="bg-slate-950 text-white min-h-screen font-sans pb-12">
+<body class="bg-slate-950 text-white min-h-screen font-sans pb-24">
 
-    <!-- App Container (Hidden automatically when rendering a hosted website) -->
-    <div id="appRoot">
-        <!-- Top Header with Download App Button -->
-        <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
-            <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
-                <div class="flex items-center gap-2.5">
-                    <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30">
-                        <i class="fa-solid fa-server text-white"></i>
-                    </div>
-                    <div>
-                        <h1 class="font-bold text-base leading-none">HTML Host</h1>
-                        <span class="text-[11px] text-emerald-400">● Vercel Live Hosting</span>
-                    </div>
+    <!-- Top Header -->
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30">
+                    <i class="fa-solid fa-server text-white"></i>
                 </div>
-
-                <!-- Download / Install App Button -->
-                <button id="installAppBtn" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg shadow-emerald-600/20 flex items-center gap-1.5 active:scale-95 transition">
-                    <i class="fa-brands fa-android text-sm"></i> Download App
-                </button>
+                <div>
+                    <h1 class="font-bold text-base leading-none">ایچ ٹی ایم ایل ہوسٹ</h1>
+                    <span class="text-[11px] text-emerald-400">● ویورسل ہائی لیول سسٹم</span>
+                </div>
             </div>
-        </header>
 
-        <main class="max-w-md mx-auto px-4 mt-6 space-y-6">
-            <!-- Upload Card -->
+            <!-- Direct APK Download Button -->
+            <a href="app.apk" download class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg shadow-emerald-600/20 flex items-center gap-1.5 active:scale-95 transition">
+                <i class="fa-solid fa-download text-sm"></i> ڈاؤن لوڈ ایپ
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Content Views -->
+    <main class="max-w-md mx-auto px-4 mt-6">
+
+        <!-- VIEW 1: UPLOAD SECTION -->
+        <section id="viewUpload" class="space-y-6">
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
-                <h2 class="text-lg font-bold mb-1">Upload index.html & Get Link</h2>
-                <p class="text-xs text-slate-400 mb-4">اپنی <code class="text-blue-400">index.html</code> فائل اپلوڈ کریں اور گوگل کروم کا لائیو لنک حاصل کریں۔</p>
-
-                <!-- Mode Switch Tabs -->
-                <div class="grid grid-cols-2 gap-2 bg-slate-950 p-1 rounded-xl mb-4 border border-slate-800">
-                    <button type="button" id="tabFileBtn" class="py-2 text-xs font-bold rounded-lg bg-blue-600 text-white transition">
-                        <i class="fa-solid fa-file-arrow-up mr-1"></i> Upload File
-                    </button>
-                    <button type="button" id="tabCodeBtn" class="py-2 text-xs font-bold rounded-lg text-slate-400 hover:text-white transition">
-                        <i class="fa-solid fa-code mr-1"></i> Paste Code
-                    </button>
-                </div>
+                <h2 class="text-lg font-bold mb-1">فائل اپلوڈ کریں</h2>
+                <p class="text-xs text-slate-400 mb-4">اپنی <code class="text-blue-400">index.html</code> فائل سلیکٹ کریں اور فوری لائیو لنک حاصل کریں۔</p>
 
                 <form id="hostForm" class="space-y-4">
                     <div>
-                        <label class="block text-xs text-slate-400 mb-1">Website Title / Name</label>
-                        <input type="text" id="siteNameInput" placeholder="e.g. My Portfolio Site" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500" />
+                        <label class="block text-xs text-slate-400 mb-1">ویب سائٹ کا نام ( اختیاری )</label>
+                        <input type="text" id="siteNameInput" placeholder="مثال: مائی پورٹ فولیو" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-blue-500 text-right" />
                     </div>
 
                     <!-- File Upload Box -->
-                    <div id="fileUploadSection">
+                    <div>
                         <label class="flex flex-col items-center justify-center w-full h-36 border-2 border-dashed border-slate-700 hover:border-blue-500 rounded-2xl cursor-pointer bg-slate-950/60 transition">
                             <div class="flex flex-col items-center justify-center pt-5 pb-6 text-center px-3">
                                 <i class="fa-solid fa-cloud-arrow-up text-3xl text-blue-500 mb-2"></i>
-                                <p class="text-sm font-semibold text-slate-200" id="selectedFileName">Select index.html File</p>
-                                <p class="text-xs text-slate-500 mt-1">Tap to choose from mobile storage</p>
+                                <p class="text-sm font-semibold text-slate-200" id="selectedFileName">انڈیکس ڈاٹ ایچ ٹی ایم ایل فائل چنیں</p>
+                                <p class="text-xs text-slate-500 mt-1">موبائل سٹوریج سے سلیکٹ کریں</p>
                             </div>
                             <input type="file" id="htmlFileInput" accept=".html,.htm" class="hidden" />
                         </label>
                     </div>
 
-                    <!-- Raw Code Box -->
-                    <div id="codePasteSection" class="hidden">
-                        <label class="block text-xs text-slate-400 mb-1">Paste HTML Code</label>
-                        <textarea id="rawHtmlInput" rows="5" placeholder="<!DOCTYPE html><html><body><h1>Hello World</h1></body></html>" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-mono text-emerald-400 focus:outline-none focus:border-blue-500"></textarea>
-                    </div>
-
                     <button type="submit" id="generateBtn" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2 active:scale-95 transition">
-                        <i class="fa-solid fa-bolt"></i> Generate Live Link
+                        <i class="fa-solid fa-bolt"></i> لائیو لنک بنائیں
                     </button>
                 </form>
             </div>
 
-            <!-- Generated Link Result Box -->
+            <!-- Result Card -->
             <div id="resultCard" class="hidden bg-slate-900 border-2 border-emerald-500/60 rounded-2xl p-5 shadow-2xl">
                 <div class="flex items-center gap-2 text-emerald-400 text-sm font-bold mb-2">
-                    <i class="fa-solid fa-circle-check text-lg"></i> Live Link Ready!
+                    <i class="fa-solid fa-circle-check text-lg"></i> لائیو لنک تیار ہے!
                 </div>
-                <p class="text-xs text-slate-400 mb-2">اس لنک پر کلک کریں، گوگل کروم میں آپ کی سائٹ اوپن ہو جائے گی:</p>
+                <p class="text-xs text-slate-400 mb-2">اس لنک پر کلک کریں، گوگل کروم میں آپ کی سائیٹ اوپن ہو جائے گی:</p>
 
-                <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 mb-4 break-all max-h-24 overflow-y-auto">
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 mb-4 break-all max-h-24 overflow-y-auto text-left">
                     <a id="generatedUrlAnchor" href="#" target="_blank" class="text-blue-400 font-mono text-xs underline"></a>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2.5">
                     <a id="openBrowserBtn" href="#" target="_blank" class="col-span-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl text-center text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
-                        <i class="fa-brands fa-chrome"></i> Open in Google Chrome
+                        <i class="fa-brands fa-chrome"></i> گوگل کروم میں کھولیں
                     </a>
                     <button type="button" id="copyLinkBtn" class="bg-slate-800 hover:bg-slate-700 text-white font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5">
-                        <i class="fa-regular fa-copy"></i> Copy Link
+                        <i class="fa-regular fa-copy"></i> لنک کاپی کریں
                     </button>
                     <a id="whatsappShareBtn" href="#" target="_blank" class="bg-green-600/20 border border-green-500/40 text-green-400 font-semibold py-2.5 rounded-xl text-xs flex items-center justify-center gap-1.5">
-                        <i class="fa-brands fa-whatsapp text-sm"></i> Share on WhatsApp
+                        <i class="fa-brands fa-whatsapp text-sm"></i> واٹس ایپ شیئر
                     </a>
                 </div>
             </div>
+        </section>
 
-            <!-- Saved Hosted Websites History -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5">
-                <div class="flex items-center justify-between mb-3">
-                    <h3 class="text-sm font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-clock-rotate-left text-blue-400"></i> My Hosted Websites
-                    </h3>
-                    <button type="button" id="clearHistoryBtn" class="text-xs text-red-400 hover:underline">Clear All</button>
+        <!-- VIEW 2: DATA CHECK / MY SITES -->
+        <section id="viewData" class="hidden space-y-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-base font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-database text-blue-400"></i> ہوسٹ شدہ ڈیٹا (مائی سائٹس)
+                    </h2>
+                    <button type="button" id="clearHistoryBtn" class="text-xs text-red-400 hover:underline">سب ڈیلیٹ کریں</button>
                 </div>
                 <div id="historyContainer" class="space-y-2.5 text-xs"></div>
             </div>
-        </main>
-    </div>
+        </section>
+
+        <!-- VIEW 3: ABOUT / DEVELOPER -->
+        <section id="viewAbout" class="hidden space-y-4">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl text-center space-y-4">
+                <div class="w-20 h-20 bg-blue-600/20 border border-blue-500/30 rounded-full mx-auto flex items-center justify-center text-blue-400 text-3xl shadow-inner">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-white">پاکٹ ایچ ٹی ایم ایل ہوسٹ</h2>
+                    <p class="text-xs text-slate-400 mt-1">ورژن 2.0 - پروڈکشن ہوسٹنگ پلیٹ فارم</p>
+                </div>
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 text-right space-y-2 text-xs text-slate-300">
+                    <p><strong class="text-blue-400">ڈویلپر:</strong> حماد اصغر (Hammad Asghar)</p>
+                    <p><strong class="text-blue-400">تفصیل:</strong> یہ ایپ آپ کو اپنی موبائل کی ایچ ٹی ایم ایل فائلز کو فوری طور پر لائیو ہوسٹ کرنے اور گوگل کروم میں چلانے کی سہولت دیتی ہے۔</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md border-t border-slate-800 z-50">
+        <div class="max-w-md mx-auto grid grid-cols-3 py-2 px-4 text-center">
+            <button type="button" id="navUploadBtn" class="flex flex-col items-center justify-center py-1 text-blue-400 transition">
+                <i class="fa-solid fa-cloud-arrow-up text-lg mb-1"></i>
+                <span class="text-[11px] font-bold">اپلوڈ</span>
+            </button>
+            <button type="button" id="navDataBtn" class="flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition">
+                <i class="fa-solid fa-database text-lg mb-1"></i>
+                <span class="text-[11px] font-bold">ڈیٹا چیک</span>
+            </button>
+            <button type="button" id="navAboutBtn" class="flex flex-col items-center justify-center py-1 text-slate-400 hover:text-slate-200 transition">
+                <i class="fa-solid fa-circle-info text-lg mb-1"></i>
+                <span class="text-[11px] font-bold">اباؤٹ</span>
+            </button>
+        </div>
+    </nav>
 
     <script type="module" src="/main.ts"></script>
 </body>
